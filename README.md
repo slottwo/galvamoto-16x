@@ -1,1 +1,1 @@
-# A 8-bits Processor implementation on Minecraft
+# A 8-bits Monociclic Processor implementation on Minecraft
