@@ -15,7 +15,7 @@
 
    1. Load from mem to reg:
 
-      `lw $reg immediate|0` <=> 0000 xxxi (IIII IIII)
+      `lw $reg immediate|0` <=> `0000 xxxi (IIII IIII)`
 
    2. Save in mem from reg:
 
