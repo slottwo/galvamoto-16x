@@ -15,36 +15,40 @@
 
    1. Load from mem to reg:
 
-      `lw $reg immediate|0` <=> `0000 xxxi (IIII IIII)`
+      `lw $reg immediate|0` <=> `0000 xxxi (IIIIIIII)`
 
    2. Save in mem from reg:
 
-      `sw $reg immediate|0` <=> `0001 xxxi (IIII IIII)`
+      `sw $reg immediate|0` <=> `0001 xxxi (IIIIIIII)`
 
 1. Jumping:
 
    0. Jump to immediate address:
 
-      `ji immediate` <=> `0010 0 000 IIII IIII`
+      `j immediate` <=> `0010 0 001 IIIIIIII`
 
    1. Jump to address on register:
 
       `jr $reg` <=> `0010 1 xxx`
-   
+
    2. Branch to immediate address if register equals zero
-   
-      `beq $reg` <=> `0011 0 xxx IIII IIII`
-   
+
+      `beq $reg` <=> `0011 0 xxx IIIIIIII`
+
    3. Branch if ...
-   
+
       ...
 
-
 2. .
+   
 3. .
+
 4. .
+
 5. .
+
 6. .
+
 7. .
 
 > Required functionalities:
@@ -56,5 +60,16 @@
 > > Jump
 >
 > > Set less then
+
+## Registers
+
+0. `000` |
+1. `001` |
+2. `010` |
+3. `011` |
+4. `100` |
+5. `110` |
+6. `101` |
+7. `111` |
 
 # Architecture 16-bits
