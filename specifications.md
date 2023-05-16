@@ -19,25 +19,25 @@
 
    2. Save in mem from reg:
 
-      `sw $reg immediate|0` <=> 0001 xxxi (IIII IIII)
+      `sw $reg immediate|0` <=> `0001 xxxi (IIII IIII)`
 
 1. Jumping:
 
    0. Jump to immediate address:
 
-      `ji immediate` 0010 0 000 IIII IIII
+      `ji immediate` <=> `0010 0 000 IIII IIII`
 
    1. Jump to address on register:
 
-      `jr $reg` 0010 1 xxx
+      `jr $reg` <=> `0010 1 xxx`
    
    2. Branch to immediate address if register equals zero
    
-      `beq $reg` 0011 0 xxx IIII IIII
+      `beq $reg` <=> `0011 0 xxx IIII IIII`
    
    3. Branch if ...
    
-      `jr $reg` 0011 1 xxx yyy 00 zzz
+      ...
 
 
 2. .
