@@ -4,43 +4,43 @@
 
 > Instruction name: `syntax` <=> 0000 0000
 
-0. Interact with memory: 000o xxxi
+0. Interact with memory: 000o ixxx
 
    | bits | value | info         |
    | ---- | ----- | ------------ |
    | 3b   | 000   | instruction  |
    | 1b   | 0/1   | if lw or sw  |
-   | 3b   | xxx   | reg dest id  |
    | 1b   | 0/1   | if immediate |
+   | 3b   | xxx   | reg dest id  |
 
    1. Load from mem to reg:
 
-      `lw $reg immediate|0` <=> `0000 xxxi (IIIIIIII)`
+      `lw $reg immediate|0` <=> `0000 ixxx (IIIIIIII)`
 
    2. Save in mem from reg:
 
-      `sw $reg immediate|0` <=> `0001 xxxi (IIIIIIII)`
+      `sw $reg immediate|0` <=> `0001 ixxx (IIIIIIII)`
 
 1. Jumping:
 
-   0. Jump to immediate address:
+   1. Jump to immediate address:
 
       `j immediate` <=> `0010 0 001 IIIIIIII`
 
-   1. Jump to address on register:
+   2. Jump to address on register:
 
       `jr $reg` <=> `0010 1 xxx`
 
-   2. Branch to immediate address if register equals zero
+   3. Branch to immediate address if register equals zero
 
       `beq $reg` <=> `0011 0 xxx IIIIIIII`
 
-   3. Branch if ...
+   4. Branch if ...
 
       ...
 
 2. .
-   
+
 3. .
 
 4. .
