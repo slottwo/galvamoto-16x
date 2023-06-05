@@ -16,7 +16,7 @@ I    | func      | Binary                | Hex
 ---  | ---       | ---                   | ---
 j    |           | `0000 iiii iiii iiii` | `0iii`
 set  | d=i       | `0001 regD iiii iiii` | `1dii`
-aai  | d+=i      | `0001 regD iiii iiii` | `2dii`
+aai  | d+=i      | `0010 regD iiii iiii` | `2dii`
 add  | d=s+t     | `0011 regD regS regT` | `3dst`
 addi | d=s+i     | `0100 regD regS iiii` | `4dsi`
 sll  | d*=2^i    | `0101 regD regS iiii` | `5dsi`
