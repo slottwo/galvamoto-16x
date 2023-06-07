@@ -23,11 +23,12 @@ subi | d=s-i     | `0101 regD regS iiii` | `5dsi`
 sll  | d*=2^i    | `0110 regD regS iiii` | `6dsi`
 slr  | d/=2^i    | `0111 regD regS iiii` | `7dsi`
 slt  | d=s<t     | `1000 regD regS regT` | `8dst`
-lw   | d=s[i]    | `1001 regD regS iiii` | `9dsi`
-sw   | s[i]=t    | `1010 iiii regS regT` | `Aist`
-beq  | s==t?j->i | `1011 iiii regS regT` | `Bist`
-bne  | s!=t?j->i | `1100 iiii regS regT` | `Cist`
-j    | go to i   | `1101 iiii iiii iiii` | `Diii`
+slti | d=s<i     | `1000 regD regS iiii` | `9dsi`
+lw   | d=s[i]    | `1001 regD regS iiii` | `Adsi`
+sw   | s[i]=t    | `1010 iiii regS regT` | `Bist`
+beq  | s==t?j->i | `1011 iiii regS regT` | `Cist`
+bne  | s!=t?j->i | `1100 iiii regS regT` | `Dist`
+j    | go to i   | `1101 iiii iiii iiii` | `Eiii`
 exit |           | `1111 iiii iiii iiii` | `Fiii`
 
 ## ALU Operations
