@@ -29,6 +29,6 @@ sw   | s[i]=t    | `1010 iiii regS regT` | `Bist`
 beq  | s==t?j->i | `1011 iiii regS regT` | `Cist`
 bne  | s!=t?j->i | `1100 iiii regS regT` | `Dist`
 j    | go to i   | `1101 iiii iiii iiii` | `Eiii`
-exit |           | `1111 iiii iiii iiii` | `Fiii`
+jr   |           | `1111 0000 regS 0000` | `Firi`
 
 ## ALU Operations
