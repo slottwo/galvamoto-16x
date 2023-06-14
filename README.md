@@ -6,6 +6,9 @@ Sendo assim, montamos o Galvamoto16.
 Ele recebe instruções em hex diretamente na sua memoria ROM, com futuramente a implementação do assembler sera possivel escrever um codigo texto e traduzilo para hexa.
 
 ### Componentes
+Primeiramente temos o
+
+
 
 ### Instruções
 Este é o formato atual das instruções do GM16x.
