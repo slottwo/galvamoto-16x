@@ -44,11 +44,11 @@
 | sll  | 5dst | d\*=2^t      |
 | slli | 6dst | d/=2^i       |
 | slt  | 7dst | d=s<t        |
-| beq  | 80st | s==t ? -> $f |
-| bne  | 8fst | s!=t ? -> $f |
-| j    | 9iii | -> i         |
-| lw   | Adsi | d=\*(s+i)    |
-| sw   | Bist | \*(s+i)=t    |
+| beq  | 8xst | s==t ? -> $f |
+| bne  | 9xst | s!=t ? -> $f |
+| j    | Aiii | -> i         |
+| lw   | Bdsi | d=\*(s+i)    |
+| sw   | Cist | \*(s+i)=t    |
 
 | i    | hex  | op   | j   | b   | lw  | sw  | str |
 | ---- | ---- | ---- | --- | --- | --- | --- | --- |
