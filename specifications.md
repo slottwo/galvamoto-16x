@@ -3,32 +3,66 @@
 > Required functionalities:
 >
 > - Load and Save from memory
->
 > - Branch If
->
 > - Jump
->
 > - Set less then
 
 ## Instruction set
 
-I    | func      | Binary                | Hex
----  | ---       | ---                   | ---
-none |           | `0000 0000 0000 0000` | `0000`
-li   | d=i       | `0001 regD iiii iiii` | `1dii`
-add  | d=s+t     | `0010 regD regS regT` | `2dst`
-addi | d=s+i     | `0011 regD regS iiii` | `3dsi`
-sub  | d=s-t     | `0100 regD regS regT` | `4dst`
-subi | d=s-i     | `0101 regD regS iiii` | `5dsi`
-sll  | d*=2^i    | `0110 regD regS iiii` | `6dsi`
-slr  | d/=2^i    | `0111 regD regS iiii` | `7dsi`
-slt  | d=s<t     | `1000 regD regS regT` | `8dst`
-slti | d=s<i     | `1000 regD regS iiii` | `9dsi`
-lw   | d=s[i]    | `1001 regD regS iiii` | `Adsi`
-sw   | s[i]=t    | `1010 iiii regS regT` | `Bist`
-beq  | s==t?j->i | `1011 iiii regS regT` | `Cist`
-bne  | s!=t?j->i | `1100 iiii regS regT` | `Dist`
-j    | go to i   | `1101 iiii iiii iiii` | `Eiii`
-jr   |           | `1111 0000 regS 0000` | `Firi`
+| I    | func      | Binary                  | Hex      |
+| ---- | --------- | ----------------------- | -------- |
+| none |           | `0000 0000 0000 0000` | `0000` |
+| li   | d=i       | `0001 regD iiii iiii` | `1dii` |
+| add  | d=s+t     | `0010 regD regS regT` | `2dst` |
+| addi | d=s+i     | `0011 regD regS iiii` | `3dsi` |
+| sub  | d=s-t     | `0100 regD regS regT` | `4dst` |
+| subi | d=s-i     | `0101 regD regS iiii` | `5dsi` |
+| sll  | d*=2^i    | `0110 regD regS iiii` | `6dsi` |
+| slr  | d/=2^i    | `0111 regD regS iiii` | `7dsi` |
+| slt  | d=s<t     | `1000 regD regS regT` | `8dst` |
+| slti | d=s<i     | `1001 regD regS iiii` | `9dsi` |
+| lw   | d=s[i]    | `1001 regD regS iiii` | `Adsi` |
+| sw   | s[i]=t    | `1010 iiii regS regT` | `Bist` |
+| beq  | s==t?j->i | `1011 iiii regS regT` | `Cist` |
+| bne  | s!=t?j->i | `1100 iiii regS regT` | `Dist` |
+| j    | go to i   | `1101 iiii iiii iiii` | `Eiii` |
+| jr   |           | `1111 0000 regS 0000` | `Firi` |
 
 ## ALU Operations
+
+---
+
+## New I-Set
+
+| i    | hex  | asm   |
+| ---- | ---- | ----- |
+| none | 0000 |       |
+| li   | 1dii | d=i   |
+| add  | 2dst | d=s+t |
+| addi | 3dsi | d=s+i |
+| or   | 4dst | d=s\|t |
+| sll  | 5dst | d*=2^t |
+| slli | 6dst | d/=2^i |
+| slt  | 7dst | d=s<t |
+| beq  | 80st | s==t ? -> $f |
+| bne  | 8fst | s!=t ? -> $f |
+| j    | 9iii | -> i |
+| lw   | Adsi | d=*(s+i) |
+| sw   | Bist | *(s+i)=t |
+
+| i    | hex  |  op  | ALUo | j | b | lw | sw | str | 
+| ---- | ---- | ---- | ---- | - | - | -- | -- | --- | 
+| none | 0000 | 0000 | ffff | 0 |   |    |    |     | 
+| li   | 1dii | 0001 | 0000 | 0 |   |    |    |     | 
+| add  | 2dst | 0010 | 0001 | 0 |   |    |    |     | 
+| addi | 3dsi | 0011 | 0010 | 0 |   |    |    |     | 
+| or   | 4dst | 0100 | 0011 | 0 |   |    |    |     | 
+| sll  | 5dst | 0101 |      | 0 |   |    |    |     | 
+| slli | 6dst | 0110 |      | 0 |   |    |    |     | 
+| slt  | 7dst | 0111 |      | 0 |   |    |    |     | 
+| beq  | 80st | 1000 |      | 1 |   |    |    |     | 
+| bne  | 8fst | 1000 |      | 1 |   |    |    |     | 
+| j    | 9iii | 1001 |      | 1 |   |    |    |     | 
+| j    | 9iii | 1001 |      | 1 |   |    |    |     | 
+| lw   | Adsi | 1010 |      |   |   |    |    |     | 
+| sw   | Bist | 1011 |      |   |   |    |    |     | 
