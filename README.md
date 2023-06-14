@@ -1,34 +1,57 @@
-# Um processador 16-bits Galvamoto16x (GM16x)
+# Processador 16-bits Galvamoto16x (GM16x)
+## Sobre
 
-### Sobre
-
-Um projeto desenvolvido para cadeira de Arquitetura de computadores para faculdade UFCA, atraves do qual o professor nos instruiui a montar um processador silimar ao MIPS.
+Um projeto desenvolvido para a cadeira de Arquitetura de Computadores na UFCA, através do qual o professor nos instruiu a montar um processador similar ao MIPS.
 
 Sendo assim, montamos o Galvamoto16.
-Ele recebe instruções em hex diretamente na sua memoria ROM, com futuramente a implementação do assembler sera possivel escrever um codigo texto e traduzilo para hexa.
-
+Ele recebe instruções em hexadecimal diretamente na sua memória ROM. Com a implementação futura do assembler, será possível escrever um código em texto e traduzi-lo para hexadecimal.
 ## Componentes
-
 ### Main
 
-O principal circuito no qual esão localizada todas as ligações entres os subcomponenstes do nosso processador.
-Alguns sinais de controles tambem estão definidos aqui.
+O principal circuito no qual estão localizadas todas as ligações entre os subcomponentes do nosso processador.
+Alguns sinais de controle também estão definidos aqui.
 
-![main.png](assets%2Fmain.png)
+![Circuto principal](assets/main.png)
 
 ### ROM
 
-Composto pelo registrador PC no qual armazena a linha na qual o rom esta lendo.
-A memoria ROM no qual estão localizadas as instruções e são lidas e enviadas para o preocessador.
-A cada pulso do clock o endereço no registrador é incrementado e passado como endereço novamente para rom, lendo assim linha por linha, porem dependendo da situação dando saltos de linhas.
+Composto pelo registrador PC, que armazena a linha em que a ROM está lendo.
+A memória ROM contém as instruções que são lidas e enviadas para o processador.
+A cada pulso do clock, o endereço no registrador é incrementado e passado novamente como endereço para a ROM, lendo assim linha por linha. No entanto, dependendo da situação, podem ocorrer saltos de linhas.
 
-![rom.png](assets/rom.png)
+![Memória ROM](assets/rom.png)
 
-### Ctrl Logic
+### Lógica de controle: `Ctrl Logic`
 
+O controle recebe os 4 bits da instrução (12-15) e define quais operações ele irá realizar. As possibilidades são:
 
+- j - jump
+- b - branch
+- ldMem - carregar da memória
+- strMem - carregar na memória
+- strReg - escrever no registrador
 
-![Controle.png](assets/ctrl.png)
+É possível visualizar quais os sinais que cada instrução passa através da tabela de instruções.
+
+![Lógica de controle](assets/ctrl.png)
+
+### Unidade Lógica Aritmética (ULA): `ALU`
+
+A ULA recebe como entrada o OP e os conteúdos dos registradores e o imediato, e realiza operações como soma, subtração e shift left.
+Ela é capaz de realizar todas as operações possíveis. No entanto, por meio de um multiplexador, é possível escolher apenas a operação desejada a ser executada com as entradas.
+
+![Unidade Lógica Aritmética](assets/alu.png)
+
+### Memória RAM: `MEM`
+
+A memória RAM 16x16 é alterada por meio das operações de lw e sw. Ela possui um endereço da linha atual e, como é possível escrever nela, recebe um DataIn como entrada e o DataOut como saída.
+Assim, é possível realizar leitura e escrita na memória RAM, mas é mais lento do que armazenar nos registradores. No entanto, oferece mais espaço.
+
+![Memória RAM](assets/mem.png)
+
+### Banco de registradores: `Regs`
+
+Os 16 registradores do processador estão localizados aqui. O registrador $0 é apenas leitura, sempre retornando o valor 0, e o $11 é reservado para operações de branch. Portanto, sempre que a operação de branch for verdadeira, ele saltará para o endereço contido no registrador $11.
 
 ### Instruções
 
