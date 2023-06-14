@@ -9,15 +9,15 @@
 
 ## Instruction set
 
-| I    | func      | Binary                  | Hex      |
-| ---- | --------- | ----------------------- | -------- |
+| I    | func      | Binary                | Hex    |
+| ---- | --------- | --------------------- | ------ |
 | none |           | `0000 0000 0000 0000` | `0000` |
 | li   | d=i       | `0001 regD iiii iiii` | `1dii` |
 | add  | d=s+t     | `0010 regD regS regT` | `2dst` |
 | addi | d=s+i     | `0011 regD regS iiii` | `3dsi` |
 | sub  | d=s-t     | `0100 regD regS regT` | `4dst` |
 | subi | d=s-i     | `0101 regD regS iiii` | `5dsi` |
-| sll  | d*=2^i    | `0110 regD regS iiii` | `6dsi` |
+| sll  | d\*=2^i   | `0110 regD regS iiii` | `6dsi` |
 | slr  | d/=2^i    | `0111 regD regS iiii` | `7dsi` |
 | slt  | d=s<t     | `1000 regD regS regT` | `8dst` |
 | slti | d=s<i     | `1001 regD regS iiii` | `9dsi` |
@@ -34,35 +34,34 @@
 
 ## New I-Set
 
-| i    | hex  | asm   |
-| ---- | ---- | ----- |
-| none | 0000 |       |
-| li   | 1dii | d=i   |
-| add  | 2dst | d=s+t |
-| addi | 3dsi | d=s+i |
-| or   | 4dst | d=s\|t |
-| sll  | 5dst | d*=2^t |
-| slli | 6dst | d/=2^i |
-| slt  | 7dst | d=s<t |
+| i    | hex  | asm          |
+| ---- | ---- | ------------ |
+| none | 0000 |              |
+| li   | 1dii | d=i          |
+| add  | 2dst | d=s+t        |
+| addi | 3dsi | d=s+i        |
+| or   | 4dst | d=s\|t       |
+| sll  | 5dst | d\*=2^t      |
+| slli | 6dst | d/=2^i       |
+| slt  | 7dst | d=s<t        |
 | beq  | 80st | s==t ? -> $f |
 | bne  | 8fst | s!=t ? -> $f |
-| j    | 9iii | -> i |
-| lw   | Adsi | d=*(s+i) |
-| sw   | Bist | *(s+i)=t |
+| j    | 9iii | -> i         |
+| lw   | Adsi | d=\*(s+i)    |
+| sw   | Bist | \*(s+i)=t    |
 
-| i    | hex  |  op  | j | b | lw | sw | str |
-| ---- | ---- | ---- | - | - | -- | -- | --- |
-| none | 0000 | 0000 | 0 | 0 | 0  | 0  | 0   |
-| li   | 1dii | 0001 | 0 | 0 | 0  | 0  | 1   |
-| add  | 2dst | 0010 | 0 | 0 | 0  | 0  | 1   |
-| addi | 3dsi | 0011 | 0 | 0 | 0  | 0  | 1   |
-| or   | 4dst | 0100 | 0 | 0 | 0  | 0  | 1   |
-| sll  | 5dst | 0101 | 0 | 0 | 0  | 0  | 1   |
-| slli | 6dst | 0110 | 0 | 0 | 0  | 0  | 1   |
-| slt  | 7dst | 0111 | 0 | 0 | 0  | 0  | 1   |
-| beq  | 80st | 1000 | 1 | 1 | 0  | 0  | 0   |
-| bne  | 8fst | 1000 | 1 | 1 | 0  | 0  | 0   |
-| j    | 9iii | 1001 | 1 | 0 | 0  | 0  | 0   |
-| lw   | Adsi | 1010 | 0 | 0 | 1  | 0  | 1   |
-| sw   | Bist | 1011 | 0 | 0 | 0  | 1  | 0   |
-
+| i    | hex  | op   | j   | b   | lw  | sw  | str |
+| ---- | ---- | ---- | --- | --- | --- | --- | --- |
+| none | 0000 | 0000 | 0   | 0   | 0   | 0   | 0   |
+| li   | 1dii | 0001 | 0   | 0   | 0   | 0   | 1   |
+| add  | 2dst | 0010 | 0   | 0   | 0   | 0   | 1   |
+| addi | 3dsi | 0011 | 0   | 0   | 0   | 0   | 1   |
+| or   | 4dst | 0100 | 0   | 0   | 0   | 0   | 1   |
+| sll  | 5dst | 0101 | 0   | 0   | 0   | 0   | 1   |
+| slli | 6dst | 0110 | 0   | 0   | 0   | 0   | 1   |
+| slt  | 7dst | 0111 | 0   | 0   | 0   | 0   | 1   |
+| beq  | 8xst | 1000 | 1   | 1   | 0   | 0   | 0   |
+| bne  | 9xst | 1001 | 1   | 1   | 0   | 0   | 0   |
+| j    | Aiii | 1010 | 1   | 0   | 0   | 0   | 0   |
+| lw   | Bdsi | 1011 | 0   | 0   | 1   | 0   | 1   |
+| sw   | Cist | 1100 | 0   | 0   | 0   | 1   | 0   |
