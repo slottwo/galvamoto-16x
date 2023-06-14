@@ -7,13 +7,28 @@ Um projeto desenvolvido para cadeira de Arquitetura de computadores para faculda
 Sendo assim, montamos o Galvamoto16.
 Ele recebe instruções em hex diretamente na sua memoria ROM, com futuramente a implementação do assembler sera possivel escrever um codigo texto e traduzilo para hexa.
 
-### Componentes
+## Componentes
 
-#### Main
+### Main
 
 O principal circuito no qual esão localizada todas as ligações entres os subcomponenstes do nosso processador.
-Alguns sinais de controles tambem estão definidos aqui ....
+Alguns sinais de controles tambem estão definidos aqui.
+
 ![main.png](assets%2Fmain.png)
+
+### ROM
+
+Composto pelo registrador PC no qual armazena a linha na qual o rom esta lendo.
+A memoria ROM no qual estão localizadas as instruções e são lidas e enviadas para o preocessador.
+A cada pulso do clock o endereço no registrador é incrementado e passado como endereço novamente para rom, lendo assim linha por linha, porem dependendo da situação dando saltos de linhas.
+
+![rom.png](assets/rom.png)
+
+### Ctrl Logic
+
+
+
+![Controle.png](assets/ctrl.png)
 
 ### Instruções
 
