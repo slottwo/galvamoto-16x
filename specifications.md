@@ -40,7 +40,7 @@
 | li   | 1dii | d=i          |
 | add  | 2dst | d=s+t        |
 | addi | 3dsi | d=s+i        |
-|      | 4dst |              |
+| ori  | 4dsi |              |
 | sl   | 5dst | d\*=2^t      |
 | sr   | 6dst | d/=2^t       |
 | slt  | 7dst | d=s<t        |
@@ -56,7 +56,7 @@
 | li   | 1dii | 0001 | 0   | 0   | 0   | 0   | 1   |
 | add  | 2dst | 0010 | 0   | 0   | 0   | 0   | 1   |
 | addi | 3dsi | 0011 | 0   | 0   | 0   | 0   | 1   |
-| ori  | 4dii | 0100 | 0   | 0   | 0   | 0   | 1   |
+| ori  | 4dsi | 0100 | 0   | 0   | 0   | 0   | 1   |
 | sl   | 5dst | 0101 | 0   | 0   | 0   | 0   | 1   |
 | sr   | 6dst | 0110 | 0   | 0   | 0   | 0   | 1   |
 | slt  | 7dst | 0111 | 0   | 0   | 0   | 0   | 1   |
