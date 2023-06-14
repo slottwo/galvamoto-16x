@@ -6,8 +6,10 @@ Sendo assim, montamos o Galvamoto16.
 Ele recebe instruções em hex diretamente na sua memoria ROM, com futuramente a implementação do assembler sera possivel escrever um codigo texto e traduzilo para hexa.
 
 ### Componentes
-Primeiramente temos o
-
+#### Main
+O principal circuito no qual esão localizada todas as ligações entres os subcomponenstes do nosso processador.
+Alguns sinais de controles tambem estão definidos aqui ....
+![main.png](assets%2Fmain.png)
 
 
 ### Instruções
